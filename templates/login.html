@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles/styles.css') }}"
+    />
+
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container min-vh-100">
+      <div class="row mt-5">
+        <div class="col">
+          <h2 style="text-align: center">Login</h2>
+        </div>
+      </div>
+
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div
+        class="alert alert-{{category}} alert-dismissible fade show mt-2"
+        role="alert"
+      >
+        <strong>{{error}}</strong> - {{message}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %}
+
+      <!-- <h5 class="col mt-5" style="text-align: center">Download - Results</h5> -->
+      <div class="content d-flex justify-content-center">
+      <form class="d-flex flex-column w-50"
+      action="/login"
+          method="POST">
+        <div class="form-group mt-4">
+          <label>Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+        </div>
+        <div class="form-group mt-4">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control"  placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary mt-5">Login</button>
+        <a href="/register"><small>New user? Register</small></a>
+      </form>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
